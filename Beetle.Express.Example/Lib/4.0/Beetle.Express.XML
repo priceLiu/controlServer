@@ -1,0 +1,1011 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Beetle.Express</name>
+    </assembly>
+    <members>
+        <member name="T:Beetle.Express.IChannel">
+            <summary>
+            连接描述接口
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.LRUDetect.IConnecton">
+            <summary>
+            连接描述接口
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.LRUDetect">
+            <summary>
+            基于LRU算法的连接检测
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.LRUDetect.#ctor(System.Int32)">
+            <summary>
+            构建检测器
+            </summary>
+            <param name="timeout">超时时间以毫秒为单位</param>
+        </member>
+        <member name="M:Beetle.Express.LRUDetect.Update(Beetle.Express.LRUDetect.IConnecton)">
+            <summary>
+            更新连接
+            </summary>
+            <param name="connection">连接信息</param>
+        </member>
+        <member name="M:Beetle.Express.LRUDetect.Delete(Beetle.Express.LRUDetect.IConnecton)">
+            <summary>
+            删除连接
+            </summary>
+            <param name="connection">连接信息</param>
+        </member>
+        <member name="M:Beetle.Express.LRUDetect.Dispose">
+            <summary>
+            释放对象
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.LRUDetect.IConnecton">
+            <summary>
+            连接描述接口
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.LRUDetect.IConnecton.TimeOut">
+            <summary>
+            超时操作,当LRU算法检测到应该连接超时的时候会调用该方法
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.LRUDetect.IConnecton.Node">
+            <summary>
+            获取对应在LRU算法中的节点
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.LRUDetect.Node">
+            <summary>
+            节点信息
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.LRUDetect.Node.LastActiveTime">
+            <summary>
+            最后活动时间
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.LRUDetect.Node.Connection">
+            <summary>
+            相关连接信息
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.LRUDetect.Node.Detect(System.Int32,System.Int32)">
+            <summary>
+            检测是否过期
+            </summary>
+            <param name="cutime"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Beetle.Express.IChannel.InvokeSend">
+            <summary>
+            调用通道进行数据发送
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.IChannel.InvokeError(System.Exception)">
+            <summary>
+            调用通道进行错误通道
+            </summary>
+            <param name="e">具体错误信息</param>
+        </member>
+        <member name="M:Beetle.Express.IChannel.InvokeReceive(Beetle.Express.IReceiveData)">
+            <summary>
+            调用通道进行数据接收
+            </summary>
+            <param name="data">接收数据信息</param>
+        </member>
+        <member name="P:Beetle.Express.IChannel.ID">
+            <summary>
+            获取当前连接的唯一ID值
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IChannel.Name">
+            <summary>
+            获取或设置连接对应的名称
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IChannel.Item(System.String)">
+            <summary>
+            获取或设置连接的相关引用信息
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Beetle.Express.IChannel.Server">
+            <summary>
+            获取连接对应的服务
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IChannel.IsDisposed">
+            <summary>
+            获取当前连接是否已经断开
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IChannel.EndPoint">
+            <summary>
+            获取当前连接的IP地址和端口信息
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IChannel.Socket">
+            <summary>
+            获取当前连接对应的Socket对象
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IChannel.ChannelType">
+            <summary>
+            获取通道类型
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.IData">
+            <summary>
+            数据描述接口
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.IData.ExChange(System.Int32)">
+            <summary>
+            更改计数情况
+            </summary>
+            <param name="value">计数值</param>
+        </member>
+        <member name="M:Beetle.Express.IData.Decrement">
+            <summary>
+            递减计数
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IData.Array">
+            <summary>
+            获取或设置数据内容
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IData.Offset">
+            <summary>
+            获取或设置开始索引
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IData.Count">
+            <summary>
+            获取或设置数据长度
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IData.Tag">
+            <summary>
+            标记对象
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IData.Counter">
+            <summary>
+            获取当前数据包的计数
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.UdpServer">
+             <summary>
+             Copyright © henryfan 2013		 
+            Email:	henryfan@msn.com	
+            HomePage:	http://www.ikende.com		
+            CreateTime:	2013/4/6 22:14:06
+             </summary>
+        </member>
+        <member name="T:Beetle.Express.IServer">
+            <summary>
+            服务端规则描述
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.IServer.Send(Beetle.Express.IData,Beetle.Express.IChannel[])">
+            <summary>
+            向指定的通道发送数据
+            </summary>
+            <param name="data">需要发送的数据</param>
+            <param name="channels">相关通道列表</param>
+        </member>
+        <member name="M:Beetle.Express.IServer.Send(Beetle.Express.IData,System.Collections.Generic.IList{Beetle.Express.IChannel})">
+            <summary>
+            向指定的通道发送数据
+            </summary>
+            <param name="data">需要发送的数据</param>
+            <param name="channels">相关通道列表</param>
+        </member>
+        <member name="M:Beetle.Express.IServer.InvokeReceive(Beetle.Express.IReceiveData)">
+            <summary>
+            调用数据接收过程
+            用于组件内部处理,在应用不需要直接调用此方法
+            </summary>
+            <param name="rd">接收数据规则</param>
+        </member>
+        <member name="M:Beetle.Express.IServer.InvokeSend(Beetle.Express.IChannel)">
+            <summary>
+            调用数据发送过程
+            用于组件内部处理,在应用不需要直接调用此方法
+            </summary>
+            <param name="channel">发送数据的通道</param>
+        </member>
+        <member name="M:Beetle.Express.IServer.Open">
+            <summary>
+            打开服务
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.IServer.Open(Beetle.Express.Listen)">
+            <summary>
+            在指定监听信息打开服务
+            </summary>
+            <param name="listen">监听描述</param>
+        </member>
+        <member name="M:Beetle.Express.IServer.PopData">
+            <summary>
+            从服务数据池中获取接收数据对象
+            用于组件内部处理,在应用不需要直接调用此方法
+            </summary>
+            <returns>IReceiveData</returns>
+        </member>
+        <member name="M:Beetle.Express.IServer.GetOnlines">
+            <summary>
+            获取所有在线通道
+            </summary>
+            <returns>IChannel[]</returns>
+        </member>
+        <member name="M:Beetle.Express.IServer.GetOnlines(Beetle.Express.IChannel[])">
+            <summary>
+            获取所有在线通道
+            </summary>
+            <param name="array">需要填充的数组</param>
+            <returns>返回对应数组的区间</returns>
+        </member>
+        <member name="M:Beetle.Express.IServer.GetChannel(System.String)">
+            <summary>
+            获取相关ID的通道
+            </summary>
+            <param name="id">string</param>
+            <returns>IChannel</returns>
+        </member>
+        <member name="P:Beetle.Express.IServer.Handler">
+            <summary>
+            获取服务处理句柄
+            主要用于处理连接接入,断开和接收消息等方法
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IServer.Name">
+            <summary>
+            获取当前服务名称
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IServer.Port">
+            <summary>
+            获取或设置服务的端口，默认值是8088
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IServer.Host">
+            <summary>
+            获取或设置服务地址
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IServer.SendBufferSize">
+            <summary>
+            获取或设置发送缓存大小，默认是4096
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IServer.ReceiveBufferSize">
+            <summary>
+            获取或设置接收缓存大小，默认是4096
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IServer.ReceiveDataPoolSize">
+            <summary>
+            获取或设置接收数据池大小,默认是1000
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IServer.Version">
+            <summary>
+            当前服务的版本号,连接接入和删除都会更改些信息
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.UdpServer.Open">
+            <summary>
+            打开服务
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.UdpServer.Open(Beetle.Express.Listen)">
+            <summary>
+            根据指定名称的配置节打开服务
+            </summary>
+            <param name="config">配置节名称</param>
+        </member>
+        <member name="M:Beetle.Express.UdpServer.Send(Beetle.Express.IData,Beetle.Express.IChannel[])">
+            <summary>
+            把数据发送到指定的连接
+            </summary>
+            <param name="data">发送的数据对象</param>
+            <param name="channels">对应的连接</param>
+        </member>
+        <member name="M:Beetle.Express.UdpServer.Send(Beetle.Express.IData,System.Collections.Generic.IList{Beetle.Express.IChannel})">
+            <summary>
+            把数据发送到指定的连接
+            </summary>
+            <param name="data">发送的数据对象</param>
+            <param name="channels">对应的连接</param>
+        </member>
+        <member name="M:Beetle.Express.UdpServer.Dispose">
+            <summary>
+            释放当服务
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.UdpServer.Port">
+            <summary>
+            获取或设置服务的端口，默认值是8088
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.UdpServer.Host">
+            <summary>
+            获取或设置服务地址
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.UdpServer.SendBufferSize">
+            <summary>
+            获取或设置发送缓存大小，默认是4096
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.UdpServer.ReceiveBufferSize">
+            <summary>
+            获取或设置接收缓存大小，默认是4096
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.UdpServer.ReceiveDataPoolSize">
+            <summary>
+            获取或设置接收数据池大小,默认是1000
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.UdpServer.Handler">
+            <summary>
+            获取或设置处理的句柄，包括连接接入，断开，数据接收，错误和发送情况的一系列过程。
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.ServerSection">
+            <summary>
+            The ServerSection Configuration Section.
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.ServerSection.ServerSectionSectionName">
+            <summary>
+            The XML name of the ServerSection Configuration Section.
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.ServerSection.XmlnsPropertyName">
+            <summary>
+            The XML name of the <see cref="P:Beetle.Express.ServerSection.Xmlns"/> property.
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.ServerSection.ListensPropertyName">
+            <summary>
+            The XML name of the <see cref="P:Beetle.Express.ServerSection.Listens"/> property.
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.ServerSection.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.ServerSection.Instance">
+            <summary>
+            Gets the ServerSection instance.
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.ServerSection.Xmlns">
+            <summary>
+            Gets the XML namespace of this Configuration Section.
+            </summary>
+            <remarks>
+            This property makes sure that if the configuration file contains the XML namespace,
+            the parser doesn't throw an exception because it encounters the unknown "xmlns" attribute.
+            </remarks>
+        </member>
+        <member name="P:Beetle.Express.ServerSection.Listens">
+            <summary>
+            Gets or sets the Listens.
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.Listen">
+            <summary>
+            The Listen Configuration Element.
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.Listen.NamePropertyName">
+            <summary>
+            The XML name of the <see cref="P:Beetle.Express.Listen.Name"/> property.
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.Listen.PortPropertyName">
+            <summary>
+            The XML name of the <see cref="P:Beetle.Express.Listen.Port"/> property.
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.Listen.HostPropertyName">
+            <summary>
+            The XML name of the <see cref="P:Beetle.Express.Listen.Host"/> property.
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.Listen.SendBufferSizePropertyName">
+            <summary>
+            The XML name of the <see cref="P:Beetle.Express.Listen.SendBufferSize"/> property.
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.Listen.ReceiveBufferSizePropertyName">
+            <summary>
+            The XML name of the <see cref="P:Beetle.Express.Listen.ReceiveBufferSize"/> property.
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.Listen.ReceiveDataPoolSizePropertyName">
+            <summary>
+            The XML name of the <see cref="P:Beetle.Express.Listen.ReceiveDataPoolSize"/> property.
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.Listen.HandlerPropertyName">
+            <summary>
+            The XML name of the <see cref="P:Beetle.Express.Listen.Handler"/> property.
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.Listen.TypePropertyName">
+            <summary>
+            The XML name of the <see cref="P:Beetle.Express.Listen.Type"/> property.
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.Listen.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.Listen.Name">
+            <summary>
+            Gets or sets the Name.
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.Listen.Port">
+            <summary>
+            Gets or sets the Port.
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.Listen.Host">
+            <summary>
+            Gets or sets the Host.
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.Listen.SendBufferSize">
+            <summary>
+            Gets or sets the SendBufferSize.
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.Listen.ReceiveBufferSize">
+            <summary>
+            Gets or sets the ReceiveBufferSize.
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.Listen.ReceiveDataPoolSize">
+            <summary>
+            Gets or sets the ReceiveDataPoolSize.
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.Listen.Handler">
+            <summary>
+            Gets or sets the Handler.
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.Listen.Type">
+            <summary>
+            Gets or sets the Type.
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.ListenCollection">
+            <summary>
+            A collection of Listen instances.
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.ListenCollection.ListenPropertyName">
+            <summary>
+            The XML name of the individual <see cref="T:Beetle.Express.Listen"/> instances in this collection.
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.ListenCollection.IsElementName(System.String)">
+            <summary>
+            Indicates whether the specified <see cref="T:System.Configuration.ConfigurationElement"/> exists in the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="elementName">The name of the element to verify.</param>
+            <returns>
+            <see langword="true"/> if the element exists in the collection; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:Beetle.Express.ListenCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for the specified configuration element.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:Beetle.Express.ListenCollection.CreateNewElement">
+            <summary>
+            Creates a new <see cref="T:Beetle.Express.Listen"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:Beetle.Express.Listen"/>.
+            </returns>
+        </member>
+        <member name="M:Beetle.Express.ListenCollection.Add(Beetle.Express.Listen)">
+            <summary>
+            Adds the specified <see cref="T:Beetle.Express.Listen"/> to the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="serverListen">The <see cref="T:Beetle.Express.Listen"/> to add.</param>
+        </member>
+        <member name="M:Beetle.Express.ListenCollection.Remove(Beetle.Express.Listen)">
+            <summary>
+            Removes the specified <see cref="T:Beetle.Express.Listen"/> from the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <param name="serverListen">The <see cref="T:Beetle.Express.Listen"/> to remove.</param>
+        </member>
+        <member name="M:Beetle.Express.ListenCollection.GetItemAt(System.Int32)">
+            <summary>
+            Gets the <see cref="T:Beetle.Express.Listen"/> at the specified index.
+            </summary>
+            <param name="index">The index of the <see cref="T:Beetle.Express.Listen"/> to retrieve.</param>
+        </member>
+        <member name="M:Beetle.Express.ListenCollection.GetItemByKey(System.String)">
+            <summary>
+            Gets the <see cref="T:Beetle.Express.Listen"/> with the specified key.
+            </summary>
+            <param name="name">The key of the <see cref="T:Beetle.Express.Listen"/> to retrieve.</param>
+        </member>
+        <member name="M:Beetle.Express.ListenCollection.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the element is read-only.
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.ListenCollection.CollectionType">
+            <summary>
+            Gets the type of the <see cref="T:System.Configuration.ConfigurationElementCollection"/>.
+            </summary>
+            <returns>The <see cref="T:System.Configuration.ConfigurationElementCollectionType"/> of this collection.</returns>
+        </member>
+        <member name="P:Beetle.Express.ListenCollection.ElementName">
+            <summary>
+            Gets the name used to identify this collection of elements
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.ListenCollection.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:Beetle.Express.Listen"/> at the specified index.
+            </summary>
+            <param name="index">The index of the <see cref="T:Beetle.Express.Listen"/> to retrieve.</param>
+        </member>
+        <member name="P:Beetle.Express.ListenCollection.Item(System.Object)">
+            <summary>
+            Gets the <see cref="T:Beetle.Express.Listen"/> with the specified key.
+            </summary>
+            <param name="name">The key of the <see cref="T:Beetle.Express.Listen"/> to retrieve.</param>
+        </member>
+        <member name="T:Beetle.Express.TcpServer">
+             <summary>
+             TCP服务对象,用于在监听指定IP和端口的TCP服务
+             </summary>
+             <example>
+             配置
+             <code>
+               <configSections>
+             <section name="serverSection" type="Beetle.Express.ServerSection, Beetle.Express"/>
+             </configSections>
+             <serverSection host=""
+                          port="8088"
+                          receiveBufferSize="4096"
+                         receiveDataPoolSize="1000"
+                         sendBufferSize="4096"
+                        handler="HelloWorld.Program,HelloWorld"/>
+             </code>
+             代码
+             <code>
+            class Program : IServerHandler
+            {
+                  static void Main(string[] args)
+                  {
+                      TcpServer server = new TcpServer();
+                      server.Open("serverSection");
+                      Console.WriteLine("Start {0}@{1}", server.Host, server.Port);
+                      System.Threading.Thread.Sleep(-1);
+                  }
+            
+                 public void Connect(TcpServer server, ChannelConnectEventArgs e)
+                 {
+                     Console.WriteLine("{0} connected", e.Channel.EndPoint);
+                 }
+            
+                 public void Disposed(TcpServer server, ChannelEventArgs e)
+                 {
+                     Console.WriteLine("{0} disposed", e.Channel.EndPoint);
+                 }
+            
+                 public void Error(TcpServer server, ErrorEventArgs e)
+                 {
+                     Console.WriteLine("{0} error:{1}", e.Channel.EndPoint, e.Error.Message);
+                 }
+            
+                 public void Receive(TcpServer server, ChannelReceiveEventArgs e)
+                 {
+                     Data data = new Data();
+                     byte[] hw = Encoding.ASCII.GetBytes("Hello World");
+                     data.SetBuffer(hw, hw.Length);
+                     server.Send(data, e.Channel);
+            
+                 }
+            
+                 public void SendCompleted(TcpServer server, ChannelSendEventArgs e)
+                 {
+            
+                 }
+            }
+             </code>
+             </example>
+        </member>
+        <member name="M:Beetle.Express.TcpServer.Open">
+            <summary>
+            打开服务
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.TcpServer.Open(Beetle.Express.Listen)">
+            <summary>
+            根据指定名称的配置节打开服务
+            </summary>
+            <param name="config">配置节名称</param>
+        </member>
+        <member name="M:Beetle.Express.TcpServer.Send(Beetle.Express.IData,Beetle.Express.IChannel[])">
+            <summary>
+            把数据发送到指定的连接
+            </summary>
+            <param name="data">发送的数据对象</param>
+            <param name="channels">对应的连接</param>
+        </member>
+        <member name="M:Beetle.Express.TcpServer.Send(Beetle.Express.IData,System.Collections.Generic.IList{Beetle.Express.IChannel})">
+            <summary>
+            把数据发送到指定的连接
+            </summary>
+            <param name="data">发送的数据对象</param>
+            <param name="channels">对应的连接</param>
+        </member>
+        <member name="M:Beetle.Express.TcpServer.Dispose">
+            <summary>
+            释放当服务
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.TcpServer.Port">
+            <summary>
+            获取或设置服务的端口，默认值是8088
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.TcpServer.Host">
+            <summary>
+            获取或设置服务地址
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.TcpServer.SendBufferSize">
+            <summary>
+            获取或设置发送缓存大小，默认是4096
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.TcpServer.ReceiveBufferSize">
+            <summary>
+            获取或设置接收缓存大小，默认是4096
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.TcpServer.ReceiveDataPoolSize">
+            <summary>
+            获取或设置接收数据池大小,默认是1000
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.TcpServer.Handler">
+            <summary>
+            获取或设置处理的句柄，包括连接接入，断开，数据接收，错误和发送情况的一系列过程。
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.ChannelSendEventArgs">
+            <summary>
+            连接发送数据完成事件信息
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.ChannelEventArgs">
+            <summary>
+            连接事件信息
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.ChannelEventArgs.Channel">
+            <summary>
+            连接信息
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.ChannelSendEventArgs.Data">
+            <summary>
+            发送的数据信息
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.ChannelSendEventArgs.Status">
+            <summary>
+            发送状态
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.ServerFactory">
+            <summary>
+            服务工厂
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.ServerFactory.#ctor(System.String)">
+            <summary>
+            从指定配置信息初始化服务工厂
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="M:Beetle.Express.ServerFactory.Dispose">
+            <summary>
+            释放当前工厂中的所有服务
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.ServerFactory.Servers">
+            <summary>
+            获取所有服务
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.SendStatus">
+            <summary>
+            发送状态
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.SendStatus.Success">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.SendStatus.Error">
+            <summary>
+            错误
+            </summary>
+        </member>
+        <member name="F:Beetle.Express.SendStatus.ChannelDisposed">
+            <summary>
+            连接释放
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.ErrorEventArgs">
+            <summary>
+            错误处理事件信息
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.ErrorEventArgs.Error">
+            <summary>
+            具体错误内容
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.ErrorEventArgs.Tag">
+            <summary>
+            错误标签
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.Data">
+            <summary>
+            发送数据描述对象
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.Data.#ctor">
+            <summary>
+            构建对象
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.Data.#ctor(System.Int32)">
+            <summary>
+            构建对象并指定buffer的大小
+            </summary>
+            <param name="length">buffer长度</param>
+        </member>
+        <member name="M:Beetle.Express.Data.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            从指定的数据源复制数据
+            </summary>
+            <param name="data">数据源</param>
+            <param name="offset">开始索引</param>
+            <param name="count">总长度</param>
+        </member>
+        <member name="M:Beetle.Express.Data.Write(System.Byte[])">
+            <summary>
+            把数据写入到缓冲
+            </summary>
+            <param name="data">数据源</param>
+        </member>
+        <member name="M:Beetle.Express.Data.Write(System.String,System.Text.Encoding)">
+            <summary>
+            把字符写入到缓冲
+            </summary>
+            <param name="value">字符内容</param>
+            <param name="coding">相关编码</param>
+        </member>
+        <member name="M:Beetle.Express.Data.Write(System.IO.Stream)">
+            <summary>
+            把流写入到缓冲
+            </summary>
+            <param name="stream">数据流</param>
+        </member>
+        <member name="M:Beetle.Express.Data.Write(System.Byte[],System.Int32)">
+            <summary>
+            从指定的数据源复制数据
+            </summary>
+            <param name="data">数据源</param>
+            <param name="count">总长度</param>
+        </member>
+        <member name="M:Beetle.Express.Data.SetBuffer(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            设置数据源
+            </summary>
+            <param name="data">数据源</param>
+            <param name="offset">起始索引</param>
+            <param name="count">总长度</param>
+        </member>
+        <member name="M:Beetle.Express.Data.SetBuffer(System.Byte[],System.Int32)">
+            <summary>
+            设置数据源
+            </summary>
+            <param name="data">数据源</param>
+            <param name="count">总长度</param>
+        </member>
+        <member name="M:Beetle.Express.Data.ExChange(System.Int32)">
+            <summary>
+            更改发送计数
+            </summary>
+            <param name="value">计数值</param>
+        </member>
+        <member name="M:Beetle.Express.Data.Decrement">
+            <summary>
+            递减计数
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.Data.Array">
+            <summary>
+            获取或设置发送的数据内容
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.Data.Offset">
+            <summary>
+            获取或设置起始索引
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.Data.Count">
+            <summary>
+            获取或设置发送的数据长度
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.Data.Tag">
+            <summary>
+            发送数据对应的标记对象
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.Data.Counter">
+            <summary>
+            获取发送计数
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.EventChannelConnectd">
+            <summary>
+            连接创建事件
+            </summary>
+            <param name="sender">触发事件对象</param>
+            <param name="e">连接信息</param>
+        </member>
+        <member name="T:Beetle.Express.EventChannelDisposed">
+            <summary>
+            连接断开事件
+            </summary>
+            <param name="sender">触发事件对象</param>
+            <param name="e">连接信息</param>
+        </member>
+        <member name="T:Beetle.Express.EventChannelError">
+            <summary>
+            连接错误处理事件
+            </summary>
+            <param name="sender">触发事件对象</param>
+            <param name="e">错误详细信息</param>
+        </member>
+        <member name="T:Beetle.Express.EventChannelReceive">
+            <summary>
+            数据接收事件
+            </summary>
+            <param name="sender">触发事件对象</param>
+            <param name="e">数据详细住处</param>
+        </member>
+        <member name="T:Beetle.Express.EventChannelSend">
+            <summary>
+            发送数据事件
+            </summary>
+            <param name="sender">触发事件对象</param>
+            <param name="e">发送详细信息</param>
+        </member>
+        <member name="T:Beetle.Express.IServerHandler">
+            <summary>
+            服务处理描述接口
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.IServerHandler.Connect(Beetle.Express.IServer,Beetle.Express.ChannelConnectEventArgs)">
+            <summary>
+            连接创建处理过程
+            </summary>
+            <param name="server">对应的Tcp服务对象</param>
+            <param name="e">连接详细信息</param>
+        </member>
+        <member name="M:Beetle.Express.IServerHandler.Disposed(Beetle.Express.IServer,Beetle.Express.ChannelEventArgs)">
+            <summary>
+            连接断开处理过程
+            </summary>
+            <param name="server">对应的Tcp服务对象</param>
+            <param name="e">连接详细信息</param>
+        </member>
+        <member name="M:Beetle.Express.IServerHandler.Error(Beetle.Express.IServer,Beetle.Express.ErrorEventArgs)">
+            <summary>
+            错误处理过程
+            </summary>
+            <param name="server">对应的Tcp服务对象</param>
+            <param name="e">详细错误信息</param>
+        </member>
+        <member name="M:Beetle.Express.IServerHandler.Receive(Beetle.Express.IServer,Beetle.Express.ChannelReceiveEventArgs)">
+            <summary>
+            数据接收处理过程
+            </summary>
+            <param name="server">对应的Tcp服务对象</param>
+            <param name="e">接收数据详细信息</param>
+        </member>
+        <member name="M:Beetle.Express.IServerHandler.SendCompleted(Beetle.Express.IServer,Beetle.Express.ChannelSendEventArgs)">
+            <summary>
+            数据发送情况处理过程
+            </summary>
+            <param name="server">对应的Tcp服务对象</param>
+            <param name="e">数据发送状态信息</param>
+        </member>
+        <member name="T:Beetle.Express.IReceiveData">
+            <summary>
+            数据接收描述接口
+            </summary>
+        </member>
+        <member name="M:Beetle.Express.IReceiveData.ToString(System.Text.Encoding)">
+            <summary>
+            获取数据源对应的字符
+            </summary>
+            <param name="coding">字符编码</param>
+            <returns>字符</returns>
+        </member>
+        <member name="P:Beetle.Express.IReceiveData.Array">
+            <summary>
+            获取数据
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IReceiveData.Offset">
+            <summary>
+            起如索引
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.IReceiveData.Count">
+            <summary>
+            总长度
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.ChannelReceiveEventArgs">
+            <summary>
+            连接数据接收事件信息
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.ChannelReceiveEventArgs.Data">
+            <summary>
+            接收数据
+            </summary>
+        </member>
+        <member name="T:Beetle.Express.ChannelConnectEventArgs">
+            <summary>
+            连接创建事件信息
+            </summary>
+        </member>
+        <member name="P:Beetle.Express.ChannelConnectEventArgs.Cancel">
+            <summary>
+            是否取消连接创建
+            </summary>
+        </member>
+    </members>
+</doc>

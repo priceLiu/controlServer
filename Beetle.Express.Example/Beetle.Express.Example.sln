@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beetle.Express.Example", "Beetle.Express.Example\Beetle.Express.Example.csproj", "{360C4882-4F7D-476E-B630-6E730F4938CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{360C4882-4F7D-476E-B630-6E730F4938CE}.Debug|x86.ActiveCfg = Debug|x86
+		{360C4882-4F7D-476E-B630-6E730F4938CE}.Debug|x86.Build.0 = Debug|x86
+		{360C4882-4F7D-476E-B630-6E730F4938CE}.Release|x86.ActiveCfg = Release|x86
+		{360C4882-4F7D-476E-B630-6E730F4938CE}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
